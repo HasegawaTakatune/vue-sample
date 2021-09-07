@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <mate charset="utf-8">
+        <meta charset="UTF-8">
         <title>Hello world</title>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
