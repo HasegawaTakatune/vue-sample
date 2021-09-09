@@ -6,10 +6,10 @@
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
     <body>
-        <div id="app-1">{{  message }}</div>
+        <div id="app">{{  message }}</div>
         <script>
-        var app1 = new Vue({
-            el: '#app-1',
+        var app = new Vue({
+            el: '#app',
             data: {message: 'Hello world!'}
         })
         </script>

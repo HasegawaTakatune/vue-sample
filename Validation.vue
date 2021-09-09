@@ -7,15 +7,17 @@
     </head>
     <body>
 
-    <div id="app-2">
-        <div>テスト</div>
+    <div id="app">
         <input type="text" v-model="message">
         <div class="error" v-if="error.require">必須項目です。</div>
-        <div class="error" v-if="error.tooLong">長すぎます。</div>
+        <div class="error" v-if="error.tooLong">長すぎます。</div><br><br>
+
+        <div>入力した値</div>
+        <div>{{ message }}</div>
     </div>
     <script>
-    var app2 = new Vue({
-        el: '#app-2',
+    var app = new Vue({
+        el: '#app',
         watch:{
             message: function(newVal, oldVal){
                 this.error.require = (newVal.length < 1) ? true : false;
