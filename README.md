@@ -6,3 +6,6 @@ Vue.jsの練習を頑張ってしてるな～って気持ちで見て（利用�
 
 # 参考  
 [Vue.js入門 - とほほのＷＷＷ入門](https://www.tohoho-web.com/ex/vuejs.html)  
+  
+# サンプル  
+[サンプル１](./No0001-Display.vue)  
