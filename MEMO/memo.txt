@@ -1,2 +1,0 @@
-Vue.js入門 - とほほのＷＷＷ入門
-https://www.tohoho-web.com/ex/vuejs.html
