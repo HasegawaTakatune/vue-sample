@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="./CSS/style.css">
-        <title>Directive</title>
+        <title>Display</title>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
     <body>
