@@ -6,11 +6,15 @@
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
     <body>
-        <div id="app">{{ message }}</div>
+        <div id="app">
+            <ul>
+                <li v-for="color in colors">{{ color }}</li>
+            </ul>
+        </div>
         <script>
         var app = new Vue({
             el: '#app',
-            data: {message: 'Hello world!'}
+            data: {colors: ['Red', 'Green', 'Bule']}
         })
         </script>
     </body>

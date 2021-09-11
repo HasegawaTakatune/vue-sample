@@ -6,11 +6,18 @@
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
     <body>
-        <div id="app">{{ message }}</div>
+        <div id="app">
+            <input v-model="message">
+            <div>Message:{{ message }}</div>
+            <br>
+            <div v-pre>Message: {{ message }}</div>
+        </div>
         <script>
         var app = new Vue({
             el: '#app',
-            data: {message: 'Hello world!'}
+            data: {
+                message: 'Hello world!',
+                }
         })
         </script>
     </body>

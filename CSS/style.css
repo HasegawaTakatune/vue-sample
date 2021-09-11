@@ -1,0 +1,35 @@
+[v-cloak]{display: none}
+
+h3{
+    border-bottom: solid 1px #3f312b;
+    font-weight: 800;
+}
+
+h5{
+    border-bottom: solid 1px #3f312b;
+    width: 200px;
+    font-weight: 800;
+}
+
+.collection{
+    padding: 10px; 
+    margin-bottom: 10px; 
+    border: 5px double #333333; 
+    border-radius: 10px; 
+    background-color: #7fffd4; 
+    color: #3f312b;
+}
+
+.memo{
+    padding: 10px; 
+    margin-bottom: 10px; 
+    border: 1px solid #333333; 
+    border-radius: 10px; 
+    background-color: #ef857d; 
+    color: #3f312b;
+    width: fit-content;
+}
+
+.error{
+    color:red;
+}
