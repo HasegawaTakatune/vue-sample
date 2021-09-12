@@ -10,7 +10,7 @@
         <div id="app">
             <div class="collection">
                 <h3>はじめに</h3>
-                <span>ここの内容は<a href="https://www.tohoho-web.com/ex/vuejs.html">Vue.js入門 - とほほのＷＷＷ入門</a>に記述されているモノを写しているだけです。詳しく知りタイ場合は自分で調べてね。<br>ここでは、初めに表示についてをいろいろ試しているよ。</span>
+                <span>ここの内容は<a href="https://www.tohoho-web.com/ex/vuejs.html">Vue.js入門 - とほほのＷＷＷ入門</a>に記述されているモノを写しているだけです。詳しく知りたい場合は自分で調べてね。<br>ここでは、初めに表示についてをいろいろ試しているよ。</span>
             </div>
             <div class="collection">
                 <h3>Hello World!!</h3>

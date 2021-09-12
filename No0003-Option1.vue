@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./CSS/style.css">
+        <title>Option(Data)</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+    <body>
+        <div id="app">
+            <div class="collection">
+                <h3>はじめに</h3>
+                <span>ここの内容は<a href="https://www.tohoho-web.com/ex/vuejs.html">Vue.js入門 - とほほのＷＷＷ入門</a>に記述されているモノを写しているだけです。詳しく知りたい場合は自分で調べてね。<br>ここでは、オプション（データ）についてをいろいろ試しているよ。</span>
+            </div>
+
+            <div class="collection">
+                <h3>Data</h3>
+                <div>{{ message1 }}</div>
+                <div class="memo">Displayの最初に行っていたことのおさらいです。</div>
+            </div>
+
+            <div class="collection">
+                <h3>Component props</h3>
+                <element1 value="Hello!!"></element1>
+            </div>
+
+            <div class="collection">
+                <h3>Props data</h3>
+                <div id="element2"></div>
+            </div>
+
+            <div class="collection">
+                <h3>Computed</h3>
+                <div><input v-model="message2"></div>
+                <div>{{ upperMessage }}</div>
+            </div>
+
+            <div class="collection">
+                <h3>Methods</h3>
+                <button @click="toUpper">Upper</button>
+                <button @click="toLower">Lower</button>
+                <div>{{ message3 }}</div>
+            </div>
+
+            <div class="collection">
+                <h3>Watch</h3>
+                <form>
+                    <input type="text" name="text1" :value="message4">
+                    <input type="button" @click="change" value="Change">
+                </form>
+                <div>変更前：{{ oldMessage }}</div>
+                <div>変更後：{{ newMessage }}</div>
+            </div>
+
+        </div>
+        <script>
+
+        Vue.component('element1',{
+            props:['value'],
+            template: '<div>{{ value }}</div>'
+        });
+
+        var element2 = Vue.extend({
+            props: ['message'],
+            template: '<div>{{ message }}</div>',
+        });
+        var vm = new element2({
+            propsData: {message: 'Hello!!'},
+        }).$mount('#element2');
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message1: 'Hello world!!',
+                message2: 'Hello',
+                message3: 'Hello world!!',
+
+                message4: 'new',
+                newMessage: 'new',
+                oldMessage: 'old',
+            },
+            watch: {
+                message4: function(newVal, oldVal) {
+                    this.newMessage = newVal;
+                    this.oldMessage = oldVal;
+                },
+            },
+            methods: {
+                toUpper: function() {
+                    this.message3 = this.message3.toUpperCase();
+                },
+                toLower: function() {
+                    this.message3 = this.message3.toLowerCase();
+                },
+                change: function(el) {
+                    this.message4 = el.target.form.text1.value;
+                }
+            },
+            computed:{
+                upperMessage: function() {
+                    return this.message2.toUpperCase();
+                }
+            }
+        });        
+        </script>
+    </body>
+</html>
