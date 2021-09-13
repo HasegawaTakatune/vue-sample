@@ -14,22 +14,41 @@
             </div>
 
             <div class="collection">
-                <h3>Data</h3>
-                <div>{{ message1 }}</div>
-                <div class="memo">Displayの最初に行っていたことのおさらいです。</div>
+                <h3>Render</h3>
+                <component1 :level="1">Hello!!</component1>
+                <div class="memo">コンポーネントに引数を渡して表示を変えていくことができるようになるイメージ</div>
+            </div>
+
+            <div class="collection">
+                <h3>Render error</h3>
+                <component2 :level="1">Hello</component2>
+                <div class="memo">F12で検証画面を開くと赤文字でErr: My Errorと表示されている</div>
             </div>
 
         </div>
         <script>
+        Vue.component('component1', {
+            render: function (el) {
+                return el('h' + this.level, this.$slots.default);
+            },
+            props: ['level'],
+        });
+
+        Vue.component('component2', {
+            render: function (el) {
+                throw new Error('My Error');
+            },
+            renderError: function(ce, err){
+                return ce('pre', {style: {color: 'red'}}, err.stack);
+            },
+            props: ['level'],
+        });
 
         var app = new Vue({
             el: '#app',
-            data: {
-                message1: 'Hello world!!',
-            },
-            methods: {
-            },
-        });        
+            data: {},
+            methods: {},
+        });
         </script>
     </body>
 </html>
