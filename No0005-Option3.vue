@@ -51,17 +51,48 @@
                 <my-comp3></my-comp3>
             </div>
 
+            <div class="collection">
+                <h3>Mixins</h3>
+                <input type="button" @click="hello" value="Hello">
+                <br>
+                <div class="memo">ライブラリみたいに取り込んで利用することができるみたい、実装する際のお約束として見ておけばいい感じ。</div>
+            </div>
+
+            <div class="collection">
+                <h3>KeyCodes</h3>
+                <input type="text" @keyup.alt-h="onKeyDown">
+                <div class="memo">今回はキーイベントをtextタグに入れて使っているけど、divタグでも囲っても使えそう？コンテンツとして作りこむ分には使えそう。</div>
+            </div>
+
         </div>
         <script>
         var MyComponent1 = { template: '<div style="color: red">Hello!!</div>' };
         var MyComponent2 = { template: '<div style="color: green">Hello!!</div>' };
         var MyComponent3 = { template: '<div style="color: blue">Hello!!</div>' };
+
+        var MyMixin = {
+            methods: {
+                hello: function () {
+                    alert("Hello!");
+                },
+            },
+        };
+
+        Vue.config.keyCodes = {
+            h: 72,
+            "alt-h": [18, 72]
+        };
+
         var app = new Vue({
             el: '#app',
             data: {
                 message1: 'Hello!!',
             },
-            methods: {},
+            methods: {
+                onKeyDown: function () {
+                    alert("Help...");
+                }
+            },
 
             created: function () {
                 console.log(this);
@@ -88,7 +119,9 @@
                 'my-comp1': MyComponent1,
                 'my-comp2': MyComponent2,
                 'my-comp3': MyComponent3,
-            }
+            },
+
+            mixins: [MyMixin],
         });
         </script>
     </body>

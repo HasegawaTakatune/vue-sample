@@ -33,3 +33,40 @@ h5{
 .error{
     color:red;
 }
+
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: #cdf4f0;
+}
+
+tr:nth-child(2n+1) {
+    background: #e9faf9;
+}
+
+th {
+    padding: 10px;
+    border: solid 1px #ffffff;
+    background: #778ca3;
+    color: #ffffff;
+}
+
+td {
+    padding: 10px;
+    border: solid 1px #ffffff;
+}
+
+td > input {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.warning {
+    background: yellow !important;
+}
+
+.danger {
+    background: #ef857d !important;
+}

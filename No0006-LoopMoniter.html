@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./CSS/style.css">
+        <title>Loop moniter</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+    <body>
+        <div id="app">
+            <div class="collection">
+                <h3>はじめに</h3>
+                <span>Club 遊びBar</span><br>
+                <a href="other.html">Other</a>
+            </div>
+
+            <div class="collection">
+                <h3>Up / Down!!</h3>
+                <div><input type="checkbox" @click="IsAuto" checked>Auto</div>
+                <table border="1">
+                    <tr>
+                        <th>No</th>
+                        <th>場所</th>
+                        <th>濃度</th>
+                        <th>ステータス</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr v-for="(dc, idx) in detaction" :class="GetStatusClass(dc.concentration)">
+                        <td>{{ idx }}</td>
+                        <td>{{ dc.name }}</td>
+                        <td>{{ dc.concentration }}</td>
+                        <td>{{ GetStatus(dc.concentration) }}</td>
+                        <td><input type="button" value="Add" @click="Add(idx)" :disabled="isAuto"><input type="button" value="Sub" @click="Sub(idx)" :disabled="isAuto"></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <script>
+            const VAL_DANGER = 70;
+            const VAL_WARNING = 50;
+            const VAL_ERROR = 0;
+            var app = new Vue({
+            el: '#app',
+            name: 'LoopMoniter',
+            data: {
+                isAuto: true,
+                detaction: [
+                    {
+                        id: 0,
+                        name: '玄関',
+                        concentration: 10,
+                    },
+                    {
+                        id: 1,
+                        name: 'キッチン',
+                        concentration: 20,
+                    },
+                    {
+                        id: 2,
+                        name: 'リビング',
+                        concentration: 30,
+                    },
+                ]
+            },
+            methods: {
+                Add: function(idx){
+                    this.detaction[idx].concentration++;
+                },
+                Sub: function(idx){
+                    this.detaction[idx].concentration--;
+                },
+                IsAuto: function(event){
+                    this.isAuto = event.target.checked;
+                },
+                UpdateConcentration: function(){
+                    if(!this.isAuto) return;
+                    let ran = 0;
+                    let max = 5;
+                    let min = 1;
+                    for(let i = 0; i < 3; i++){
+                        ran = Math.floor(Math.random() * max) - min;
+                        this.detaction[i].concentration += ran;
+                    }
+                },
+                GetStatus: function(value){
+                    return (value < VAL_ERROR) ? 'エラー' : (VAL_DANGER <= value) ? '警告' : (VAL_WARNING <= value) ? '注意' : '';
+                },
+                GetStatusClass: function(value){
+                    return (value < VAL_ERROR) ? 'danger' : (VAL_DANGER <= value) ? 'danger' : (VAL_WARNING <= value) ? 'warning' : '';
+                }
+            },
+            mounted() {
+                setInterval(function(){
+                    if(document.visibilityState === 'visible'){
+                        app.UpdateConcentration();
+                    }
+                }, 1000);
+            },
+            beforeDestroy() {
+                clearInterval(this.intervalId);
+            }
+        });
+        </script>
+    </body>
+</html>
