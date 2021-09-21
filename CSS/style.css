@@ -63,10 +63,25 @@ td > input {
     margin-right: 5px;
 }
 
+ul {
+    width: 50%;
+    border: 2px #3f312b dashed; 
+    background: #cdf4f0;
+    padding: 30px;
+}
+
 .warning {
     background: yellow !important;
 }
 
 .danger {
     background: #ef857d !important;
+}
+
+.index {
+    text-align: -webkit-center;
+}
+
+.toTop {
+    text-align: right;
 }

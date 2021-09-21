@@ -1,16 +1,49 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta charset="utf-8">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-        <link rel="shortcut icon" href="">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./CSS/style.css">
+        <title>Display</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
     <body>
-        <a href="./Pages/Display.html">Display Sample</a>
+        <div id="app">
+            <div class="collection">
+                <h3>はじめに</h3>
+                <span>ここの内容は<a href="https://www.tohoho-web.com/ex/vuejs.html">Vue.js入門 - とほほのＷＷＷ入門</a>に記述されているモノを写しているだけです。詳しく知りたい場合は自分で調べてね。<br>ここでは、初めに表示についてをいろいろ試しているよ。</span>
+            </div>
+            <div class="collection index">
+                <h3>---- もくじ ----</h3>
+                <h5>初めの段</h5>
+                <ul>
+                    <li v-for="page in pages"><a :href="page.url">{{ page.name }}</a></li>
+                </ul>
+                <br>
+                <h5>遊びの段</h5>
+                <ul>
+                    <li v-for="sb in sandBoxs"><a :href="sb.url">{{ sb.name }}</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+        <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message1: 'Hello world!!',
+                pages: [
+                    { name: 'Display', url: './Contents/No0001-Display.html' },
+                    { name: 'GlobalAPI', url: './Contents/No0002-GlobalAPI.html' },
+                    { name: 'Option 1', url: './Contents/No0003-Option1.html' },
+                    { name: 'Option 2', url: './Contents/No0004-Option2.html' },
+                    { name: 'Option 3', url: './Contents/No0005-Option3.html' },
+                ],
+                sandBoxs: [
+                    { name: 'LoopMoniter', url: './Contents/Options/LoopMoniter.html' },
+                ],
+            },
+        })
+        </script>
     </body>
 </html>
