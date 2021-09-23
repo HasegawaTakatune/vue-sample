@@ -18,6 +18,7 @@ h5{
     border-radius: 10px; 
     background-color: #7fffd4; 
     color: #3f312b;
+    height: 100%;
 }
 
 .memo{
@@ -84,4 +85,89 @@ ul {
 
 .toTop {
     text-align: right;
+}
+
+.picture__main {
+    width: auto;
+    height: auto;
+}
+
+.picture__y {
+    display: inline-block;
+}
+
+.picture__x {
+    width: 20px;
+    height: 20px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+}
+
+.box__white {
+    background: white;
+}
+
+.box__black {
+    background: black;
+}
+
+.box__red {
+    background: red;
+}
+
+.box__green {
+    background: green;
+}
+
+.box__blue {
+    background: blue;
+}
+
+.box__yellow {
+    background: yellow;
+}
+
+.box__pink {
+    background: pink;
+}
+
+.box__seagreen {
+    background: #2e8b57;
+}
+
+.box__mediumaquamarine {
+    background: #66cdaa;
+}
+
+.box__aquamarine {
+    background: #7fffd4;
+}
+
+.box__lemonchiffon {
+    background: #fffacd;
+}
+
+.color__button {
+    width: 80px;
+    height: 60px;
+}
+
+.selected__color__main {
+    display: flex; 
+    margin-top: 50px;
+}
+
+.selected__color {
+    align-self: center; 
+    margin-right: 10px; 
+    font-size: 1.5rem;
+}
+
+.selected__color__box {
+    width: 40px;
+    height: 40px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
 }

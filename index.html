@@ -23,26 +23,95 @@
                 <ul>
                     <li v-for="sb in sandBoxs"><a :href="sb.url">{{ sb.name }}</a></li>
                 </ul>
-
             </div>
-
+            <div class="collection">
+                <h3>お絵かき</h3>
+                <span>ルール<br>カラーパレットから、色を選択してマスをクリックすると色がぬれるよ。好きにお絵描きしてみよう。</span>
+                <div class="picture__main">
+                    <div class="mb10">
+                        <div class="picture__y" v-for="(y, idxY) in picture">
+                            <div class="picture__x" :class="x" v-for="(x, idxX) in picture[idxY]" @click="OnClickChgColor(idxY, idxX)"></div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="selected__color__main">
+                        <div class="selected__color">Selected color </div>
+                        <div class="selected__color__box" :class="selectedColor"></div>
+                    </div>
+                    <br>
+                    <div v-for="(p, idx) in palette" style="display: inline-block;">
+                        <button class="color__button" :class="p.color" @click="OnClickSelColor(p.color)"></button>
+                    </div>
+                </div>
+            </div>
         </div>
         <script>
         var app = new Vue({
             el: '#app',
-            data: {
-                message1: 'Hello world!!',
-                pages: [
-                    { name: 'Display', url: './Contents/No0001-Display.html' },
-                    { name: 'GlobalAPI', url: './Contents/No0002-GlobalAPI.html' },
-                    { name: 'Option 1', url: './Contents/No0003-Option1.html' },
-                    { name: 'Option 2', url: './Contents/No0004-Option2.html' },
-                    { name: 'Option 3', url: './Contents/No0005-Option3.html' },
-                ],
-                sandBoxs: [
-                    { name: 'LoopMoniter', url: './Contents/Options/LoopMoniter.html' },
-                ],
+            data() {
+                const COLOR_WHITE = 0;
+                const COLOR_BLACK = 1;
+                const COLOR_RED = 2;
+                const COLOR_GREEN = 3;
+                const COLOR_BLUE = 4;
+                const COLOR_YELLOW = 5;
+                const COLOR_PINK = 6;
+
+                return{
+                    message1: 'Hello world!!',
+                    pages: [
+                        { name: 'Display', url: './Contents/No0001-Display.html' },
+                        { name: 'GlobalAPI', url: './Contents/No0002-GlobalAPI.html' },
+                        { name: 'Option 1', url: './Contents/No0003-Option1.html' },
+                        { name: 'Option 2', url: './Contents/No0004-Option2.html' },
+                        { name: 'Option 3', url: './Contents/No0005-Option3.html' },
+                    ],
+                    sandBoxs: [
+                        { name: 'LoopMoniter', url: './Contents/Options/LoopMoniter.html' },
+                    ],
+                    palette: [
+                        {name: 'white', color: 'box__white'},
+                        {name: 'black', color: 'box__black'},
+                        {name: 'red', color: 'box__red'},
+                        {name: 'green', color: 'box__green'},
+                        {name: 'blue', color: 'box__blue'},
+                        {name: 'yellow', color: 'box__yellow'},
+                        {name: 'pink', color: 'box__pink'},
+                        {name: 'seagreen', color: 'box__seagreen'},
+                        {name: 'mediumaquamarine', color: 'box__mediumaquamarine'},
+                        {name: 'aquamarine', color: 'box__aquamarine'},
+                        {name: 'lemonchiffon', color: 'box__lemonchiffon'},
+                    ],
+                    picture: null,
+                    selectedColor: 'box__black',
+                }
             },
+            methods: {
+                OnClickChgColor(y, x) {
+                    // 多次元配列をリアクティブに変更する方法はいくつかある。
+                    // 今回は配列を直接変更してspliceメソッドを空呼びして画面に反映させている。
+                    // ちゃんとした実装を必要とする場合はちゃんと調べる。
+                    this.picture[y][x] = this.selectedColor;
+                    this.picture.splice();
+                },
+                OnClickSelColor(color) {
+                    this.selectedColor = color;
+                },
+
+            },
+            mounted() {
+                const MAX_X = 30;
+                const MAX_Y = 30;
+                const DEFAULT_COLOR = 0;
+
+                this.picture = new Array(MAX_Y);
+                for(y = 0; y < MAX_Y; y++){
+                    this.picture[y] = new Array(MAX_X);
+                    for(x = 0; x < MAX_X; x++){
+                        this.picture[y][x] = this.palette[DEFAULT_COLOR].color;
+                    }
+                }
+            }
         })
         </script>
     </body>
