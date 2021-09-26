@@ -35,6 +35,15 @@ h5{
     color:red;
 }
 
+button {
+    padding: 0.1em 0.5em;
+    margin: 0.5em 0.1em;
+    font-weight: bold;
+    border: solid 3px #444444;
+    background: #e9faf9;
+    border-radius: 10px;
+}
+
 table {
     width: 100%;
     text-align: center;
@@ -159,6 +168,22 @@ ul {
     background: #ffa500;
 }
 
+.box__darkgray {
+    background: #a9a9a9;
+}
+
+.box__dimgray {
+    background: #696969;
+}
+
+.box__deeppink {
+    background: #ff1493;
+}
+
+.box__aqua {
+    background: #00ffff;
+}
+
 .color__button {
     width: 80px;
     height: 60px;
@@ -169,7 +194,7 @@ ul {
     margin-top: 50px;
 }
 
-.selected__color {
+.label {
     align-self: center; 
     margin-right: 10px; 
     font-size: 1.5rem;
@@ -178,6 +203,11 @@ ul {
 .selected__color__box {
     width: 40px;
     height: 40px;
+    padding: 0.1em 0.5em;
+    /* margin: 2em 0; */
+    font-weight: bold;
+    border: solid 3px #444444;
+    border-radius: 10px;
 }
 
 .mb10 {
