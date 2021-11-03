@@ -1,143 +1,376 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="../CSS/style.css">
-        <title>Display</title>
-        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    </head>
-    <body>
-        <div id="app">
-            <div class="collection">
-                <h3>はじめに</h3>
-                <span>ここの内容は<a href="https://www.tohoho-web.com/ex/vuejs.html">Vue.js入門 - とほほのＷＷＷ入門</a>に記述されているモノを写しているだけです。詳しく知りたい場合は自分で調べてね。<br>ここでは、初めに表示についてをいろいろ試しているよ。</span>
-                <br>
-                <div class="toTop"><a href="../index.html">トップ</a></div>
-            </div>
-            <div class="collection">
-                <h3>Hello World!!</h3>
-                {{ message1 }}
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/github-dark.min.css"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <title>Display</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
 
-            <div class="collection">
-                <h3>Display1</h3>
-                <h5>Normal</h5>
-                <div>{{ message2 }}</div>
-                <h5>v-text</h5>
-                <div v-text="message2"></div>
-                <h5>v-html</h5>
-                <div v-html="message2"></div>
-            </div>
-
-            <div class="collection">
-                <button onclick="location.reload()">再表示</button>
-                <h3>Display2</h3>
-                <h5>Normal</h5>
-                <div>{{ message3 }}</div>
-                <h5>v-cloak</h5>
-                <div v-cloak>{{ message3 }}</div>
-                <div class="memo">style.cssでv-cloakで表示準備が終わる（ロード終了）まで、非表示にしておく設定をしている。</div>
-            </div>
-
-            <div class="collection">
-                <h3>Bind value</h3>
-                <h5>v-model</h5>
-                <input type="text" v-model="message4">
-                <h5>display</h5>
-                <div>{{ message4 }}</div>
-                <h5>v-pre</h5>
-                <div v-pre>{{ message4 }}</div>x
-                <h5>v-once</h5>
-                <div v-once>{{ message4 }}</div>
-            </div>
-
-            <div class="collection">
-                <h3>Validation</h3>
-                <input type="text" v-model="message5">
-                <div class="error" v-if="error.require">必須項目です。</div>
-                <div class="error" v-if="error.tooLong">文字が長すぎます。</div>
-                <br>
-                <div>入力した値</div>
-                <div>{{ message5 }}</div>
-            </div>
-
-            <div class="collection">
-                <h3>Check Box</h3>
-                <input type="checkbox" @click="change" checked>
-                <span v-show="showCheckMSG">Hello!!</span>
-            </div>
-
-            <div class="collection">
-                <h3>Radio Button</h3>
-                <div>
-                    <input type="radio" name="showRadioTYP" onclick="app.showRadioTYP='A'" checked>A
-                    <input type="radio" name="showRadioTYP" onclick="app.showRadioTYP='B'">B
-                    <input type="radio" name="showRadioTYP" onclick="app.showRadioTYP='C'">C
-                </div>
-                <div>
-                    <span v-if="showRadioTYP == 'A'">Good morning.</span>
-                    <span v-else-if="showRadioTYP == 'B'">Hello!</span>
-                    <span v-else="showRadioTYP == 'C'">Bye!</span>
-                </div>
-            </div>
-
-            <div class="collection">
-                <h3>Loop</h3>
-                <ol>
-                    <li v-for="color in colors">{{ color }}</li>
-                </ol>
-            </div>
-
-            <div class="collection">
-                <h3>Click Event</h3>
-                <h5>Button</h5>
-                <button v-on:click="hello">Hello</button>
-                <br>
-                <button @click="hello">Hello</button>
-                <br>
-                <h5>Input</h5>
-                <input type="button" v-bind:value="label" @click="hello">
-                <br>
-                <input type="button" :value="label" @click="hello">
-                <br>
-                <input type="text" v-model="label">
-            </div>
-
-        </div>
-        <script>
+  <body>
+    <div id="app">
+      <div class="collection">
+        <h3>はじめに</h3>
+        <span
+          >ここの内容は<a href="https://www.tohoho-web.com/ex/vuejs.html"
+            >Vue.js入門 - とほほのＷＷＷ入門</a
+          >に記述されているモノを写しているだけです。詳しく知りたい場合は自分で調べてね。<br />ここでは、初めに表示についてをいろいろ試しているよ。</span
+        >
+        <br />
+        <div class="toTop"><a href="../index.html">トップ</a></div>
+      </div>
+      <div class="collection">
+        <h3>Hello World!!</h3>
+        <div class="contents">
+          <div class="web-content">{{ message1 }}</div>
+          <div class="code-content">
+            <pre><code v-pre>    &lt;div id="app"&gt;
+        {{ message }}
+    &lt;/div&gt;
+    &lt;script&gt;
         var app = new Vue({
-            el: '#app',
-            watch: {
-                message5: function(after, before){
-                    this.error.require = (after.length < 1) ? true : false;
-                    this.error.tooLong = (after.length > 14) ? true : false;
-                }
-            },
+            el: &#039;#app&#039;,
             data: {
-                message1: 'Hello world!!',
-                message2: '<br>Hello!!<br>',
-                message3: 'Hello world!!',
-                message4: 'Hello world!!',
-                message5: 'Hello world!!',
-                message6: 'Hello world!!',
-                showCheckMSG: true,
-                showRadioTYP: 'A',
-                colors: ['Red', 'Green', 'Blue'],
-                label: 'Hello!',
-                error: {
-                    require: false,
-                    tooLong: false,
-                }
+                message: &#039;Hello world!!&#039;,
             },
-            methods: {
-                change: function(event){
-                    this.show = event.target.checked;
-                },
-                hello: function(){
-                    alert('Hello!!');
-                }
-            }
         })
-        </script>
-    </body>
+    &lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection">
+        <h3>Display1</h3>
+        <div class="contents">
+          <div class="web-content">
+            <h5>Normal</h5>
+            <div>{{ message2 }}</div>
+            <h5>v-text</h5>
+            <div v-text="message2"></div>
+            <h5>v-html</h5>
+            <div v-html="message2"></div>
+          </div>
+          <div class="code-content">
+            <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;h5&gt;Normal&lt;/h5&gt;
+        &lt;div&gt;{{ message }}&lt;/div&gt;
+        &lt;h5&gt;v-text&lt;/h5&gt;
+        &lt;div v-text=&quot;message&quot;&gt;&lt;/div&gt;
+        &lt;h5&gt;v-html&lt;/h5&gt;
+        &lt;div v-html=&quot;message&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        var app = new Vue({
+            el: &#039;#app&#039;,
+            data: {
+                message: &#039;&lt;br&gt;Hello!!&lt;br&gt;&#039;,
+            },
+        })
+    &lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection">
+        <button onclick="location.reload()">再表示</button>
+        <h3>Display2</h3>
+        <div class="contents">
+          <div class="web-content">
+            <h5>Normal</h5>
+            <div>{{ message3 }}</div>
+            <h5>v-cloak</h5>
+            <div v-cloak>{{ message3 }}</div>
+            <div class="memo">
+              style.cssでv-cloakで表示準備が終わる（ロード終了）まで、非表示にしておく設定をしている。
+            </div>
+          </div>
+          <div class="code-content">
+            <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;h5&gt;Normal&lt;/h5&gt;
+        &lt;div&gt;{{ message }}&lt;/div&gt;
+        &lt;h5&gt;v-cloak&lt;/h5&gt;
+        &lt;div v-cloak&gt;{{ message }}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        var app = new Vue({
+            el: &#039;#app&#039;,
+            data: {
+                message: &#039;Hello world!!&#039;,
+            },
+        })
+    &lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection">
+        <h3>Bind value</h3>
+        <div class="contents">
+          <div class="web-content">
+            <h5>v-model</h5>
+            <input type="text" v-model="message4" />
+            <h5>display</h5>
+            <div>{{ message4 }}</div>
+            <h5>v-pre</h5>
+            <div v-pre>{{ message4 }}</div>
+            <h5>v-once</h5>
+            <div v-once>{{ message4 }}</div>
+          </div>
+          <div class="code-content">
+            <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;h5&gt;v-model&lt;/h5&gt;
+        &lt;input type=&quot;text&quot; v-model=&quot;message&quot; /&gt;
+        &lt;h5&gt;display&lt;/h5&gt;
+        &lt;div&gt;{{ message }}&lt;/div&gt;
+        &lt;h5&gt;v-pre&lt;/h5&gt;
+        &lt;div v-pre&gt;{{ message }}&lt;/div&gt;
+        &lt;h5&gt;v-once&lt;/h5&gt;
+        &lt;div v-once&gt;{{ message }}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        var app = new Vue({
+            el: &#039;#app&#039;,
+            data: {
+                message: &#039;Hello world!!&#039;,
+            },
+        })
+    &lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection">
+        <h3>Validation</h3>
+        <div class="contents">
+          <div class="web-content">
+            <input type="text" v-model="message5" />
+            <div class="error" v-if="error.require">必須項目です。</div>
+            <div class="error" v-if="error.tooLong">文字が長すぎます。</div>
+            <br />
+            <div>入力した値</div>
+            <div>{{ message5 }}</div>
+          </div>
+          <div class="code-content">
+            <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;input type=&quot;text&quot; v-model=&quot;message&quot; /&gt;
+        &lt;div class=&quot;error&quot; v-if=&quot;error.require&quot;&gt;必須項目です。&lt;/div&gt;
+        &lt;div class=&quot;error&quot; v-if=&quot;error.tooLong&quot;&gt;文字が長すぎます。&lt;/div&gt;
+        &lt;br /&gt;
+        &lt;div&gt;入力した値&lt;/div&gt;
+        &lt;div&gt;{{ message }}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+      var app = new Vue({
+        el: &quot;#app&quot;,
+        watch: {
+          message: function (after, before) {
+            this.error.require = after.length &lt; 1 ? true : false;
+            this.error.tooLong = after.length &gt; 14 ? true : false;
+          },
+        },
+        data: {
+          message: &quot;Hello world!!&quot;,
+          error: {
+            require: false,
+            tooLong: false,
+          },
+        },
+      });
+    &lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection">
+        <h3>Check Box</h3>
+        <div class="contents">
+          <div class="web-content">
+            <input type="checkbox" @click="change" checked />
+            <span v-show="showMsg">Hello!!</span>    
+          </div>
+          <div class="code-content">
+            <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;input type=&quot;checkbox&quot; @click=&quot;change&quot; checked /&gt;
+        &lt;span v-show=&quot;showMsg&quot;&gt;Hello!!&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+      var app = new Vue({
+        el: &quot;#app&quot;,
+        data: {
+          showMsg: true,
+        },
+        methods: {
+          change: function (event) {
+            this.showMsg = event.target.checked;
+          },
+        },
+      });
+    &lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection">
+        <h3>Radio Button</h3>
+        <div class="contents">
+          <div class="web-content">
+            <div>
+                <input
+                  type="radio"
+                  name="showType"
+                  onclick="app.showType='A'"
+                  checked
+                />A
+                <input
+                  type="radio"
+                  name="showType"
+                  onclick="app.showType='B'"
+                />B
+                <input
+                  type="radio"
+                  name="showType"
+                  onclick="app.showType='C'"
+                />C
+              </div>
+              <div>
+                <span v-if="showType === 'A'">Good morning.</span>
+                <span v-else-if="showType === 'B'">Hello!</span>
+                <span v-else="showType === 'C'">Bye!</span>
+              </div>
+          </div>
+          <div class="code-content">
+            <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;div&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;showType&quot; onclick=&quot;app.showType=&#039;A&#039;&quot; checked /&gt;A
+            &lt;input type=&quot;radio&quot; name=&quot;showType&quot; onclick=&quot;app.showType=&#039;B&#039;&quot; /&gt;B
+            &lt;input type=&quot;radio&quot; name=&quot;showType&quot; onclick=&quot;app.showType=&#039;C&#039;&quot; /&gt;C
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;span v-if=&quot;showType === &#039;A&#039;&quot;&gt;Good morning.&lt;/span&gt;
+            &lt;span v-else-if=&quot;showType === &#039;B&#039;&quot;&gt;Hello!&lt;/span&gt;
+            &lt;span v-else=&quot;showType === &#039;C&#039;&quot;&gt;Bye!&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+      var app = new Vue({
+        el: &quot;#app&quot;,
+        data: {
+          showType: &quot;A&quot;,
+        },
+      });
+    &lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection">
+        <h3>Loop</h3>
+        <div class="contents">
+          <div class="web-content">
+            <ol>
+                <li v-for="color in colors">{{ color }}</li>
+            </ol>
+          </div>
+          <div class="code-content">
+            <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;ol&gt;
+            &lt;li v-for=&quot;color in colors&quot;&gt;{{ color }}&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+      var app = new Vue({
+        el: &quot;#app&quot;,
+        data: {
+          colors: [&quot;Red&quot;, &quot;Green&quot;, &quot;Blue&quot;],
+        },
+      });
+    &lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection">
+        <h3>Click Event</h3>
+        <div class="contents">
+          <div class="web-content">
+            <h5>Button</h5>
+            <button v-on:click="hello">Hello</button>
+            <br />
+            <button @click="hello">Hello</button>
+            <br />
+            <h5>Input</h5>
+            <input type="button" v-bind:value="label" @click="hello" />
+            <br />
+            <input type="button" :value="label" @click="hello" />
+            <br />
+            <input type="text" v-model="label" />
+          </div>
+          <div class="code-content">
+            <pre><code v-pre>   &lt;div id="app"&gt;
+        &lt;h5&gt;Button&lt;/h5&gt;
+        &lt;button v-on:click=&quot;hello&quot;&gt;Hello&lt;/button&gt;&lt;br /&gt;
+        &lt;button @click=&quot;hello&quot;&gt;Hello&lt;/button&gt;&lt;br /&gt;
+        
+        &lt;h5&gt;Input&lt;/h5&gt;
+        &lt;input type=&quot;button&quot; v-bind:value=&quot;label&quot; @click=&quot;hello&quot; /&gt;&lt;br /&gt;
+        &lt;input type=&quot;button&quot; :value=&quot;label&quot; @click=&quot;hello&quot; /&gt;&lt;br /&gt;
+        &lt;input type=&quot;text&quot; v-model=&quot;label&quot; /&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+      var app = new Vue({
+        el: &quot;#app&quot;,
+        data: {
+          label: &quot;Hello!&quot;,
+        },
+        methods: {
+          hello: function () {
+            alert(&quot;Hello!!&quot;);
+          },
+        },
+      });
+    &lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        watch: {
+          message5: function (after, before) {
+            this.error.require = after.length < 1 ? true : false;
+            this.error.tooLong = after.length > 14 ? true : false;
+          },
+        },
+        data: {
+          message1: "Hello world!!",
+          message2: "<br>Hello!!<br>",
+          message3: "Hello world!!",
+          message4: "Hello world!!",
+          message5: "Hello world!!",
+          message6: "Hello world!!",
+          showMsg: true,
+          showType: "A",
+          colors: ["Red", "Green", "Blue"],
+          label: "Hello!",
+          error: {
+            require: false,
+            tooLong: false,
+          },
+        },
+        methods: {
+          change: function (event) {
+            this.showMsg = event.target.checked;
+          },
+          hello: function () {
+            alert("Hello!!");
+          },
+        },
+      });
+    </script>
+  </body>
 </html>

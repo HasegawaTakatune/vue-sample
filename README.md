@@ -10,6 +10,14 @@ Vue.jsの練習を頑張ってしてるな～って気持ちで見て（利用�
 [Vue.jsで構成するシングルページアプリケーション(SPA)の作り方やサンプル例【前編】](https://www.geekfeed.co.jp/geekblog/vue-spa-chap1/)  
 [Vue.js + axios + Vue Routerで作る！シンプルなSPAの作り方](https://public-constructor.com/how-to-create-spa-with-vue/)  
   
+# Webページ上にソースコードを表示する参考  
+[【ソースコードを載せるためのHTMLタグ】codeタグで綺麗なコードを表示しよう](https://ksonoda.com/code-tag-html/)  
+[【ソースコードを装飾】シンタックスハイライトとは（設定方法を解説）](https://ksonoda.com/syntaxhighlight-hightlight-js/)  
+[Getting highlight.js](https://highlightjs.org/download/)  
+[highlight.js demo](https://highlightjs.org/static/demo/)  
+[HTMLエスケープツール](https://webtools.dounokouno.com/htmlescape/index.html)  
+[【Vue.js】テキストをそのまま表示(v-pre)](https://algorithm.joho.info/programming/javascript/vue-js-v-pre/)  
+  
 # サンプル  
 [サンプルページを確認する](https://hasegawatakatune.github.io/vue-sample/)  
   

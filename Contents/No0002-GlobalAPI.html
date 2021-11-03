@@ -2,7 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/github-dark.min.css"/>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
         <title>Global API</title>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
@@ -17,20 +21,81 @@
 
             <div class="collection">
                 <h3>Component1</h3>
-                <my-component1></my-component1>
+                <div class="contents">
+                    <div class="web-content">
+                        <my-component1></my-component1>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;my-component&gt;&lt;/my-component&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        Vue.component(&#039;my-component&#039;,{ template: &#039;&lt;strong&gt;Hello!!&lt;/strong&gt;&#039; });
+        
+        var app = new Vue({
+            el: &#039;#app&#039;,
+        })
+    &lt;/script&gt;</code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
                 <h3>Component2</h3>
-                <my-component2></my-component2>
+
+                <div class="contents">
+                    <div class="web-content">
+                        <my-component2></my-component2>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;my-component&gt;&lt;/my-component&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        var MyComponent = Vue.extend({ template: &#039;&lt;strong&gt;Hello!!&lt;/strong&gt;&#039; });
+        Vue.component(&#039;my-component&#039;, MyComponent);
+        
+        var app = new Vue({
+            el: &#039;#app&#039;,
+        })
+    &lt;/script&gt;</code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
                 <h3>Component next tick</h3>
-                <button onclick="location.reload()">再表示</button>
-                <div v-once>Default :{{ message1 }}</div>
-                <div>nextTick callback :{{ message1 }}</div>
-                <div class="memo">nextTickはDOM更新サイクル終了後に呼び出されるため。デフォルト値とコールバック値を確認するか、検証画面のコンソールからnextTickのbefore/afterを比較して確認を行う。</div>
+                <div class="contents">
+                    <div class="web-content">
+                        <button onclick="location.reload()">再表示</button>
+                        <div v-once>Default :{{ message1 }}</div>
+                        <div>nextTick callback :{{ message1 }}</div>
+                        <div class="memo">nextTickはDOM更新サイクル終了後に呼び出されるため。デフォルト値とコールバック値を確認するか、検証画面のコンソールからnextTickのbefore/afterを比較して確認を行う。</div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;button onclick=&quot;location.reload()&quot;&gt;再表示&lt;/button&gt;
+        &lt;div v-once&gt;Default :{{ message }}&lt;/div&gt;
+        &lt;div&gt;nextTick callback :{{ message }}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        var app = new Vue({
+            el: &#039;#app&#039;,
+            data: {
+                message: &#039;Hello!!&#039;,
+            },
+        })
+        
+        console.log(&#039;nextTick before: &#039; + app.message);
+        app.message1 = &#039;Bye!&#039;;
+        Vue.nextTick(function() {
+            console.log(&#039;nextTick after: &#039; + app.message);
+        })
+    &lt;/script&gt;
+                            
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
@@ -40,36 +105,92 @@
                 <ul>
                     <li v-for="(value, key) in colors">{{ key }}:{{ value }}</li>
                 </ul>
+                <div class="contents">
+                    <div class="web-content"></div>
+                    <div class="code-content">
+                        <pre><code v-pre>   &lt;div id="app"&gt;
+                            &lt;/div&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
                 <h3>Vue directive</h3>
                 <div v-myfont>Hello!!</div>
+                <div class="contents">
+                    <div class="web-content"></div>
+                    <div class="code-content">
+                        <pre><code v-pre>   &lt;div id="app"&gt;
+                            &lt;/div&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
                 <h3>Vue filter</h3>
                 <div>{{ message2 | toupper }}</div>
+                <div class="contents">
+                    <div class="web-content"></div>
+                    <div class="code-content">
+                        <pre><code v-pre>   &lt;div id="app"&gt;
+                            &lt;/div&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
                 <h3>Vue use</h3>
                 <div class="memo">自作のプラグインを呼び出せる。</div>
+                <div class="contents">
+                    <div class="web-content"></div>
+                    <div class="code-content">
+                        <pre><code v-pre>   &lt;div id="app"&gt;
+                            &lt;/div&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
                 <h3>Global mixin</h3>
                 <div class="memo">グローバルミックスイン、後で詳しく確認する。</div>
+                <div class="contents">
+                    <div class="web-content"></div>
+                    <div class="code-content">
+                        <pre><code v-pre>   &lt;div id="app"&gt;
+                            &lt;/div&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
                 <h3>Vue compile</h3>
                 <div class="memo">コンパイルして画面へレンダリングするまでを行ってくれているみたい？<br>他の表示が上書きされてしまうので今は非表示<br>後で調べてみて可能ならサンプルの1つとして表示する。</div>
+                <div class="contents">
+                    <div class="web-content"></div>
+                    <div class="code-content">
+                        <pre><code v-pre>   &lt;div id="app"&gt;
+                            &lt;/div&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
                 <h3>Vue version</h3>
                 <div>{{ version }}</div>
+                <div class="contents">
+                    <div class="web-content"></div>
+                    <div class="code-content">
+                        <pre><code v-pre>   &lt;div id="app"&gt;
+                            &lt;/div&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
         </div>
         <script>
