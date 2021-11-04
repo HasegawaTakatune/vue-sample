@@ -100,16 +100,40 @@
 
             <div class="collection">
                 <h3>Vue set/delete</h3>
-                <input type="button" @click="addColor" value="Add">
-                <input type="button" @click="deleteColor" value="Delete">
-                <ul>
-                    <li v-for="(value, key) in colors">{{ key }}:{{ value }}</li>
-                </ul>
+
                 <div class="contents">
-                    <div class="web-content"></div>
+                    <div class="web-content">
+                        <input type="button" @click="addColor" value="Add">
+                        <input type="button" @click="deleteColor" value="Delete">
+                        <ul>
+                            <li v-for="(value, key) in colors" :key="key">{{ key }}:{{ value }}</li>
+                        </ul>
+                    </div>
                     <div class="code-content">
-                        <pre><code v-pre>   &lt;div id="app"&gt;
-                            &lt;/div&gt;
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+    &lt;input type=&quot;button&quot; @click=&quot;addColor&quot; value=&quot;Add&quot;&gt;
+        &lt;input type=&quot;button&quot; @click=&quot;deleteColor&quot; value=&quot;Delete&quot;&gt;
+        &lt;ul&gt;
+            &lt;li v-for=&quot;(value, key) in colors&quot; :key=&quot;key&quot;&gt;{{ key }}:{{ value }}&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            colors: {black:&#039;#000000&#039;, white:&#039;#FFFFFF&#039;},
+            version: Vue.version,
+        },
+        methods: {
+            addColor: function() {
+                Vue.set(this.colors, &#039;blue&#039;, &#039;#0000FF&#039;);
+            },
+            deleteColor: function() {
+                Vue.delete(this.colors, &#039;blue&#039;);
+            }
+        }
+    })
+    &lt;/script&gt;
                         </code></pre>
                     </div>
                 </div>
@@ -117,12 +141,25 @@
 
             <div class="collection">
                 <h3>Vue directive</h3>
-                <div v-myfont>Hello!!</div>
                 <div class="contents">
-                    <div class="web-content"></div>
+                    <div class="web-content">
+                        <div v-myfont>Hello!!</div>
+                    </div>
                     <div class="code-content">
-                        <pre><code v-pre>   &lt;div id="app"&gt;
-                            &lt;/div&gt;
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;div v-myfont&gt;Hello!!&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        Vue.directive(&#039;myfont&#039;, {
+            inserted: function(el){
+                el.style.fontSize = &#039;48pt&#039;
+            }
+        });
+
+        var app = new Vue({
+            el: &#039;#app&#039;,
+        })
+    &lt;/script&gt;
                         </code></pre>
                     </div>
                 </div>
@@ -130,12 +167,26 @@
 
             <div class="collection">
                 <h3>Vue filter</h3>
-                <div>{{ message2 | toupper }}</div>
                 <div class="contents">
-                    <div class="web-content"></div>
+                    <div class="web-content">
+                        <div>{{ message2 | toupper }}</div>
+                    </div>
                     <div class="code-content">
-                        <pre><code v-pre>   &lt;div id="app"&gt;
-                            &lt;/div&gt;
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;div&gt;{{ message | toupper }}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        Vue.filter(&#039;toupper&#039;, function(value) {
+            return value.toUpperCase();
+        });
+
+        var app = new Vue({
+            el: &#039;#app&#039;,
+            data: {
+                message: &#039;Hello!!&#039;,
+            },
+        })
+    &lt;/script&gt;
                         </code></pre>
                     </div>
                 </div>
@@ -143,12 +194,20 @@
 
             <div class="collection">
                 <h3>Vue use</h3>
-                <div class="memo">自作のプラグインを呼び出せる。</div>
                 <div class="contents">
-                    <div class="web-content"></div>
+                    <div class="web-content">
+                        <div class="memo">自作のプラグインを呼び出せる。</div>
+                    </div>
                     <div class="code-content">
-                        <pre><code v-pre>   &lt;div id="app"&gt;
-                            &lt;/div&gt;
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        Vue.use(MyPlugin);
+        
+        var app = new Vue({
+            el: &#039;#app&#039;,
+        })
+    &lt;/script&gt;
                         </code></pre>
                     </div>
                 </div>
@@ -156,12 +215,24 @@
 
             <div class="collection">
                 <h3>Global mixin</h3>
-                <div class="memo">グローバルミックスイン、後で詳しく確認する。</div>
                 <div class="contents">
-                    <div class="web-content"></div>
+                    <div class="web-content">
+                        <div class="memo">グローバルミックスイン、後で詳しく確認する。</div>
+                    </div>
                     <div class="code-content">
-                        <pre><code v-pre>   &lt;div id="app"&gt;
-                            &lt;/div&gt;
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        Vue.mixin({
+            created: function() {
+                console.log(this);
+            }
+        });
+
+        var app = new Vue({
+            el: &#039;#app&#039;,
+        })
+    &lt;/script&gt;
                         </code></pre>
                     </div>
                 </div>
@@ -169,12 +240,25 @@
 
             <div class="collection">
                 <h3>Vue compile</h3>
-                <div class="memo">コンパイルして画面へレンダリングするまでを行ってくれているみたい？<br>他の表示が上書きされてしまうので今は非表示<br>後で調べてみて可能ならサンプルの1つとして表示する。</div>
                 <div class="contents">
-                    <div class="web-content"></div>
+                    <div class="web-content">
+                        <div class="memo">コンパイルして画面へレンダリングするまでを行ってくれているみたい？<br>他の表示が上書きされてしまうので今は非表示<br>後で調べてみて可能ならサンプルの1つとして表示する。</div>
+                    </div>
                     <div class="code-content">
-                        <pre><code v-pre>   &lt;div id="app"&gt;
-                            &lt;/div&gt;
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        var res = Vue.compile(&#039;&lt;div&gt;{{ message }}&lt;/div&gt;&#039;);
+
+        var app = new Vue({
+            el: &#039;#app&#039;,
+            render: res.render,
+            staticRenderFns: res.staticRenderFns,
+            data: {
+                message: &#039;Hello!!&#039;,
+            },
+        })
+    &lt;/script&gt;
                         </code></pre>
                     </div>
                 </div>
@@ -182,12 +266,23 @@
 
             <div class="collection">
                 <h3>Vue version</h3>
-                <div>{{ version }}</div>
+
                 <div class="contents">
-                    <div class="web-content"></div>
+                    <div class="web-content">
+                        <div>{{ version }}</div>
+                    </div>
                     <div class="code-content">
-                        <pre><code v-pre>   &lt;div id="app"&gt;
-                            &lt;/div&gt;
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;div&gt;{{ version }}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        var app = new Vue({
+            el: &#039;#app&#039;,
+            data: {
+                version: Vue.version,
+            },
+        })
+    &lt;/script&gt;
                         </code></pre>
                     </div>
                 </div>
