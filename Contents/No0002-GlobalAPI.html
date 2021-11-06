@@ -13,14 +13,14 @@
     <body>
         <div id="app">
             <div class="collection">
-                <h3>はじめに</h3>
+                <h3 class="under-line">はじめに</h3>
                 <span>ここの内容は<a href="https://www.tohoho-web.com/ex/vuejs.html">Vue.js入門 - とほほのＷＷＷ入門</a>に記述されているモノを写しているだけです。詳しく知りたい場合は自分で調べてね。<br>ここでは、グローバルAPIの利用についてをいろいろ試しているよ。</span>
                 <br>
                 <div class="toTop"><a href="../index.html">トップ</a></div>
             </div>
 
             <div class="collection">
-                <h3>Component1</h3>
+                <h3 class="under-line">Component1</h3>
                 <div class="contents">
                     <div class="web-content">
                         <my-component1></my-component1>
@@ -30,19 +30,17 @@
         &lt;my-component&gt;&lt;/my-component&gt;
     &lt;/div&gt;
     &lt;script&gt;
-        Vue.component(&#039;my-component&#039;,{ template: &#039;&lt;strong&gt;Hello!!&lt;/strong&gt;&#039; });
-        
-        var app = new Vue({
-            el: &#039;#app&#039;,
-        })
+    Vue.component(&#039;my-component&#039;,{ template: &#039;&lt;strong&gt;Hello!!&lt;/strong&gt;&#039; });
+    var app = new Vue({
+        el: &#039;#app&#039;,
+    })
     &lt;/script&gt;</code></pre>
                     </div>
                 </div>
             </div>
 
             <div class="collection">
-                <h3>Component2</h3>
-
+                <h3 class="under-line">Component2</h3>
                 <div class="contents">
                     <div class="web-content">
                         <my-component2></my-component2>
@@ -52,19 +50,18 @@
         &lt;my-component&gt;&lt;/my-component&gt;
     &lt;/div&gt;
     &lt;script&gt;
-        var MyComponent = Vue.extend({ template: &#039;&lt;strong&gt;Hello!!&lt;/strong&gt;&#039; });
-        Vue.component(&#039;my-component&#039;, MyComponent);
-        
-        var app = new Vue({
-            el: &#039;#app&#039;,
-        })
+    var MyComponent = Vue.extend({ template: &#039;&lt;strong&gt;Hello!!&lt;/strong&gt;&#039; });
+    Vue.component(&#039;my-component&#039;, MyComponent);
+    var app = new Vue({
+        el: &#039;#app&#039;,
+    })
     &lt;/script&gt;</code></pre>
                     </div>
                 </div>
             </div>
 
             <div class="collection">
-                <h3>Component next tick</h3>
+                <h3 class="under-line">Component next tick</h3>
                 <div class="contents">
                     <div class="web-content">
                         <button onclick="location.reload()">再表示</button>
@@ -79,18 +76,17 @@
         &lt;div&gt;nextTick callback :{{ message }}&lt;/div&gt;
     &lt;/div&gt;
     &lt;script&gt;
-        var app = new Vue({
-            el: &#039;#app&#039;,
-            data: {
-                message: &#039;Hello!!&#039;,
-            },
-        })
-        
-        console.log(&#039;nextTick before: &#039; + app.message);
-        app.message1 = &#039;Bye!&#039;;
-        Vue.nextTick(function() {
-            console.log(&#039;nextTick after: &#039; + app.message);
-        })
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            message: &#039;Hello!!&#039;,
+        },
+    })
+    console.log(&#039;nextTick before: &#039; + app.message);
+    app.message1 = &#039;Bye!&#039;;
+    Vue.nextTick(function() {
+        console.log(&#039;nextTick after: &#039; + app.message);
+    })
     &lt;/script&gt;
                             
                         </code></pre>
@@ -99,8 +95,7 @@
             </div>
 
             <div class="collection">
-                <h3>Vue set/delete</h3>
-
+                <h3 class="under-line">Vue set/delete</h3>
                 <div class="contents">
                     <div class="web-content">
                         <input type="button" @click="addColor" value="Add">
@@ -140,7 +135,7 @@
             </div>
 
             <div class="collection">
-                <h3>Vue directive</h3>
+                <h3 class="under-line">Vue directive</h3>
                 <div class="contents">
                     <div class="web-content">
                         <div v-myfont>Hello!!</div>
@@ -150,15 +145,14 @@
         &lt;div v-myfont&gt;Hello!!&lt;/div&gt;
     &lt;/div&gt;
     &lt;script&gt;
-        Vue.directive(&#039;myfont&#039;, {
-            inserted: function(el){
-                el.style.fontSize = &#039;48pt&#039;
-            }
-        });
-
-        var app = new Vue({
-            el: &#039;#app&#039;,
-        })
+    Vue.directive(&#039;myfont&#039;, {
+        inserted: function(el){
+            el.style.fontSize = &#039;48pt&#039;
+        }
+    });
+    var app = new Vue({
+        el: &#039;#app&#039;,
+    })
     &lt;/script&gt;
                         </code></pre>
                     </div>
@@ -166,7 +160,7 @@
             </div>
 
             <div class="collection">
-                <h3>Vue filter</h3>
+                <h3 class="under-line">Vue filter</h3>
                 <div class="contents">
                     <div class="web-content">
                         <div>{{ message2 | toupper }}</div>
@@ -176,16 +170,15 @@
         &lt;div&gt;{{ message | toupper }}&lt;/div&gt;
     &lt;/div&gt;
     &lt;script&gt;
-        Vue.filter(&#039;toupper&#039;, function(value) {
-            return value.toUpperCase();
-        });
-
-        var app = new Vue({
-            el: &#039;#app&#039;,
-            data: {
-                message: &#039;Hello!!&#039;,
-            },
-        })
+    Vue.filter(&#039;toupper&#039;, function(value) {
+        return value.toUpperCase();
+    });
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            message: &#039;Hello!!&#039;,
+        },
+    })
     &lt;/script&gt;
                         </code></pre>
                     </div>
@@ -193,7 +186,7 @@
             </div>
 
             <div class="collection">
-                <h3>Vue use</h3>
+                <h3 class="under-line">Vue use</h3>
                 <div class="contents">
                     <div class="web-content">
                         <div class="memo">自作のプラグインを呼び出せる。</div>
@@ -202,11 +195,10 @@
                         <pre><code v-pre>    &lt;div id="app"&gt;
     &lt;/div&gt;
     &lt;script&gt;
-        Vue.use(MyPlugin);
-        
-        var app = new Vue({
-            el: &#039;#app&#039;,
-        })
+    Vue.use(MyPlugin);
+    var app = new Vue({
+        el: &#039;#app&#039;,
+    })
     &lt;/script&gt;
                         </code></pre>
                     </div>
@@ -214,7 +206,7 @@
             </div>
 
             <div class="collection">
-                <h3>Global mixin</h3>
+                <h3 class="under-line">Global mixin</h3>
                 <div class="contents">
                     <div class="web-content">
                         <div class="memo">グローバルミックスイン、後で詳しく確認する。</div>
@@ -223,15 +215,14 @@
                         <pre><code v-pre>    &lt;div id="app"&gt;
     &lt;/div&gt;
     &lt;script&gt;
-        Vue.mixin({
-            created: function() {
-                console.log(this);
-            }
-        });
-
-        var app = new Vue({
-            el: &#039;#app&#039;,
-        })
+    Vue.mixin({
+        created: function() {
+            console.log(this);
+        }
+    });
+    var app = new Vue({
+        el: &#039;#app&#039;,
+    })
     &lt;/script&gt;
                         </code></pre>
                     </div>
@@ -239,7 +230,7 @@
             </div>
 
             <div class="collection">
-                <h3>Vue compile</h3>
+                <h3 class="under-line">Vue compile</h3>
                 <div class="contents">
                     <div class="web-content">
                         <div class="memo">コンパイルして画面へレンダリングするまでを行ってくれているみたい？<br>他の表示が上書きされてしまうので今は非表示<br>後で調べてみて可能ならサンプルの1つとして表示する。</div>
@@ -248,16 +239,15 @@
                         <pre><code v-pre>    &lt;div id="app"&gt;
     &lt;/div&gt;
     &lt;script&gt;
-        var res = Vue.compile(&#039;&lt;div&gt;{{ message }}&lt;/div&gt;&#039;);
-
-        var app = new Vue({
-            el: &#039;#app&#039;,
-            render: res.render,
-            staticRenderFns: res.staticRenderFns,
-            data: {
-                message: &#039;Hello!!&#039;,
-            },
-        })
+    var res = Vue.compile(&#039;&lt;div&gt;{{ message }}&lt;/div&gt;&#039;);
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        render: res.render,
+        staticRenderFns: res.staticRenderFns,
+        data: {
+            message: &#039;Hello!!&#039;,
+        },
+    })
     &lt;/script&gt;
                         </code></pre>
                     </div>
@@ -265,8 +255,7 @@
             </div>
 
             <div class="collection">
-                <h3>Vue version</h3>
-
+                <h3 class="under-line">Vue version</h3>
                 <div class="contents">
                     <div class="web-content">
                         <div>{{ version }}</div>
@@ -276,12 +265,12 @@
         &lt;div&gt;{{ version }}&lt;/div&gt;
     &lt;/div&gt;
     &lt;script&gt;
-        var app = new Vue({
-            el: &#039;#app&#039;,
-            data: {
-                version: Vue.version,
-            },
-        })
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            version: Vue.version,
+        },
+    })
     &lt;/script&gt;
                         </code></pre>
                     </div>

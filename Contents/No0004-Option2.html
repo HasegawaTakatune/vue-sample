@@ -2,29 +2,87 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/github-dark.min.css"/>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
         <title>Option(DOM)</title>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
     <body>
         <div id="app">
             <div class="collection">
-                <h3>はじめに</h3>
+                <h3 class="under-line">はじめに</h3>
                 <span>ここの内容は<a href="https://www.tohoho-web.com/ex/vuejs.html">Vue.js入門 - とほほのＷＷＷ入門</a>に記述されているモノを写しているだけです。詳しく知りたい場合は自分で調べてね。<br>ここでは、オプション（DOM）についてをいろいろ試しているよ。</span>
                 <br>
                 <div class="toTop"><a href="../index.html">トップ</a></div>
             </div>
 
             <div class="collection">
-                <h3>Render</h3>
-                <component1 :level="1">Hello!!</component1>
-                <div class="memo">コンポーネントに引数を渡して表示を変えていくことができるようになるイメージ</div>
+                <h3 class="under-line">Render</h3>
+
+                <div class="contents">
+                    <div class="web-content">
+                        <component1 :level="1">Hello!!</component1>
+                        <component1 :level="2">Hello!!</component1>
+                        <component1 :level="3">Hello!!</component1>
+                        <component1 :level="4">Hello!!</component1>
+                        <component1 :level="5">Hello!!</component1>
+                        <div class="memo">コンポーネントに引数を渡して表示を変えていくことができるようになるイメージ</div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;component :level=&quot;1&quot;&gt;Hello!!&lt;/component&gt;
+        &lt;component :level=&quot;2&quot;&gt;Hello!!&lt;/component&gt;
+        &lt;component :level=&quot;3&quot;&gt;Hello!!&lt;/component&gt;
+        &lt;component :level=&quot;4&quot;&gt;Hello!!&lt;/component&gt;
+        &lt;component :level=&quot;5&quot;&gt;Hello!!&lt;/component&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    Vue.component(&#039;component&#039;, {
+        render: function (el) {
+            return el(&#039;h&#039; + this.level, this.$slots.default);
+        },
+        props: [&#039;level&#039;],
+    });
+    var app = new Vue({
+        el: &#039;#app&#039;,
+    });
+    &lt;/script&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
-                <h3>Render error</h3>
-                <component2 :level="1">Hello</component2>
-                <div class="memo">F12で検証画面を開くと赤文字でErr: My Errorと表示されている</div>
+                <h3 class="under-line">Render error</h3>
+                <div class="contents">
+                    <div class="web-content">
+                        <component2>Hello</component2>
+                        <div>{{ errorMsg.stack }}</div>
+                        <div class="memo">F12で検証画面を開くと赤文字でErr: My Errorと表示されている</div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;component &gt;Hello&lt;/component&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    Vue.component(&#039;component&#039;, {
+        render: function (el) {
+            throw new Error(&#039;My Error&#039;);
+        },
+        renderError: function(ce, err){
+            return ce(&#039;pre&#039;, {style: {color: &#039;red&#039;}}, err.stack);
+        },
+    });
+    var app = new Vue({
+        el: &#039;#app&#039;,
+    });
+    &lt;/script&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -43,13 +101,13 @@
             renderError: function(ce, err){
                 return ce('pre', {style: {color: 'red'}}, err.stack);
             },
-            props: ['level'],
         });
 
         var app = new Vue({
             el: '#app',
-            data: {},
-            methods: {},
+            data:{
+                errorMsg: new Error('My Error')
+            },
         });
         </script>
     </body>

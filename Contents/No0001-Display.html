@@ -14,7 +14,7 @@
   <body>
     <div id="app">
       <div class="collection">
-        <h3>はじめに</h3>
+        <h3 class="under-line">はじめに</h3>
         <span
           >ここの内容は<a href="https://www.tohoho-web.com/ex/vuejs.html"
             >Vue.js入門 - とほほのＷＷＷ入門</a
@@ -24,7 +24,7 @@
         <div class="toTop"><a href="../index.html">トップ</a></div>
       </div>
       <div class="collection">
-        <h3>Hello World!!</h3>
+        <h3 class="under-line">Hello World!!</h3>
         <div class="contents">
           <div class="web-content">{{ message1 }}</div>
           <div class="code-content">
@@ -32,26 +32,26 @@
         {{ message }}
     &lt;/div&gt;
     &lt;script&gt;
-        var app = new Vue({
-            el: &#039;#app&#039;,
-            data: {
-                message: &#039;Hello world!!&#039;,
-            },
-        })
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            message: &#039;Hello world!!&#039;,
+        },
+    })
     &lt;/script&gt;</code></pre>
           </div>
         </div>
       </div>
 
       <div class="collection">
-        <h3>Display1</h3>
+        <h3 class="under-line">Display1</h3>
         <div class="contents">
           <div class="web-content">
-            <h5>Normal</h5>
+            <h5 class="under-line">Normal</h5>
             <div>{{ message2 }}</div>
-            <h5>v-text</h5>
+            <h5 class="under-line">v-text</h5>
             <div v-text="message2"></div>
-            <h5>v-html</h5>
+            <h5 class="under-line">v-html</h5>
             <div v-html="message2"></div>
           </div>
           <div class="code-content">
@@ -64,12 +64,12 @@
         &lt;div v-html=&quot;message&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
     &lt;script&gt;
-        var app = new Vue({
-            el: &#039;#app&#039;,
-            data: {
-                message: &#039;&lt;br&gt;Hello!!&lt;br&gt;&#039;,
-            },
-        })
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            message: &#039;&lt;br&gt;Hello!!&lt;br&gt;&#039;,
+        },
+    })
     &lt;/script&gt;</code></pre>
           </div>
         </div>
@@ -77,12 +77,12 @@
 
       <div class="collection">
         <button onclick="location.reload()">再表示</button>
-        <h3>Display2</h3>
+        <h3 class="under-line">Display2</h3>
         <div class="contents">
           <div class="web-content">
-            <h5>Normal</h5>
+            <h5 class="under-line">Normal</h5>
             <div>{{ message3 }}</div>
-            <h5>v-cloak</h5>
+            <h5 class="under-line">v-cloak</h5>
             <div v-cloak>{{ message3 }}</div>
             <div class="memo">
               style.cssでv-cloakで表示準備が終わる（ロード終了）まで、非表示にしておく設定をしている。
@@ -96,28 +96,28 @@
         &lt;div v-cloak&gt;{{ message }}&lt;/div&gt;
     &lt;/div&gt;
     &lt;script&gt;
-        var app = new Vue({
-            el: &#039;#app&#039;,
-            data: {
-                message: &#039;Hello world!!&#039;,
-            },
-        })
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            message: &#039;Hello world!!&#039;,
+        },
+    })
     &lt;/script&gt;</code></pre>
           </div>
         </div>
       </div>
 
       <div class="collection">
-        <h3>Bind value</h3>
+        <h3 class="under-line">Bind value</h3>
         <div class="contents">
           <div class="web-content">
-            <h5>v-model</h5>
+            <h5 class="under-line">v-model</h5>
             <input type="text" v-model="message4" />
-            <h5>display</h5>
+            <h5 class="under-line">display</h5>
             <div>{{ message4 }}</div>
-            <h5>v-pre</h5>
+            <h5 class="under-line">v-pre</h5>
             <div v-pre>{{ message4 }}</div>
-            <h5>v-once</h5>
+            <h5 class="under-line">v-once</h5>
             <div v-once>{{ message4 }}</div>
           </div>
           <div class="code-content">
@@ -132,19 +132,19 @@
         &lt;div v-once&gt;{{ message }}&lt;/div&gt;
     &lt;/div&gt;
     &lt;script&gt;
-        var app = new Vue({
-            el: &#039;#app&#039;,
-            data: {
-                message: &#039;Hello world!!&#039;,
-            },
-        })
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            message: &#039;Hello world!!&#039;,
+        },
+    })
     &lt;/script&gt;</code></pre>
           </div>
         </div>
       </div>
 
       <div class="collection">
-        <h3>Validation</h3>
+        <h3 class="under-line">Validation</h3>
         <div class="contents">
           <div class="web-content">
             <input type="text" v-model="message5" />
@@ -164,29 +164,29 @@
         &lt;div&gt;{{ message }}&lt;/div&gt;
     &lt;/div&gt;
     &lt;script&gt;
-      var app = new Vue({
-        el: &quot;#app&quot;,
-        watch: {
-          message: function (after, before) {
-            this.error.require = after.length &lt; 1 ? true : false;
-            this.error.tooLong = after.length &gt; 14 ? true : false;
-          },
+    var app = new Vue({
+      el: &quot;#app&quot;,
+      watch: {
+        message: function (after, before) {
+          this.error.require = after.length &lt; 1 ? true : false;
+          this.error.tooLong = after.length &gt; 14 ? true : false;
         },
-        data: {
-          message: &quot;Hello world!!&quot;,
-          error: {
-            require: false,
-            tooLong: false,
-          },
+      },
+      data: {
+        message: &quot;Hello world!!&quot;,
+        error: {
+          require: false,
+          tooLong: false,
         },
-      });
+      },
+    });
     &lt;/script&gt;</code></pre>
           </div>
         </div>
       </div>
 
       <div class="collection">
-        <h3>Check Box</h3>
+        <h3 class="under-line">Check Box</h3>
         <div class="contents">
           <div class="web-content">
             <input type="checkbox" @click="change" checked />
@@ -198,24 +198,24 @@
         &lt;span v-show=&quot;showMsg&quot;&gt;Hello!!&lt;/span&gt;
     &lt;/div&gt;
     &lt;script&gt;
-      var app = new Vue({
-        el: &quot;#app&quot;,
-        data: {
-          showMsg: true,
+    var app = new Vue({
+      el: &quot;#app&quot;,
+      data: {
+        showMsg: true,
+      },
+      methods: {
+        change: function (event) {
+          this.showMsg = event.target.checked;
         },
-        methods: {
-          change: function (event) {
-            this.showMsg = event.target.checked;
-          },
-        },
-      });
+      },
+    });
     &lt;/script&gt;</code></pre>
           </div>
         </div>
       </div>
 
       <div class="collection">
-        <h3>Radio Button</h3>
+        <h3 class="under-line">Radio Button</h3>
         <div class="contents">
           <div class="web-content">
             <div>
@@ -256,19 +256,19 @@
         &lt;/div&gt;
     &lt;/div&gt;
     &lt;script&gt;
-      var app = new Vue({
-        el: &quot;#app&quot;,
-        data: {
-          showType: &quot;A&quot;,
-        },
-      });
+    var app = new Vue({
+      el: &quot;#app&quot;,
+      data: {
+        showType: &quot;A&quot;,
+      },
+    });
     &lt;/script&gt;</code></pre>
           </div>
         </div>
       </div>
 
       <div class="collection">
-        <h3>Loop</h3>
+        <h3 class="under-line">Loop</h3>
         <div class="contents">
           <div class="web-content">
             <ol>
@@ -282,27 +282,27 @@
         &lt;/ol&gt;
     &lt;/div&gt;
     &lt;script&gt;
-      var app = new Vue({
-        el: &quot;#app&quot;,
-        data: {
-          colors: [&quot;Red&quot;, &quot;Green&quot;, &quot;Blue&quot;],
-        },
-      });
+    var app = new Vue({
+      el: &quot;#app&quot;,
+      data: {
+        colors: [&quot;Red&quot;, &quot;Green&quot;, &quot;Blue&quot;],
+      },
+    });
     &lt;/script&gt;</code></pre>
           </div>
         </div>
       </div>
 
       <div class="collection">
-        <h3>Click Event</h3>
+        <h3 class="under-line">Click Event</h3>
         <div class="contents">
           <div class="web-content">
-            <h5>Button</h5>
+            <h5 class="under-line">Button</h5>
             <button v-on:click="hello">Hello</button>
             <br />
             <button @click="hello">Hello</button>
             <br />
-            <h5>Input</h5>
+            <h5 class="under-line">Input</h5>
             <input type="button" v-bind:value="label" @click="hello" />
             <br />
             <input type="button" :value="label" @click="hello" />
@@ -321,17 +321,17 @@
         &lt;input type=&quot;text&quot; v-model=&quot;label&quot; /&gt;
     &lt;/div&gt;
     &lt;script&gt;
-      var app = new Vue({
-        el: &quot;#app&quot;,
-        data: {
-          label: &quot;Hello!&quot;,
+    var app = new Vue({
+      el: &quot;#app&quot;,
+      data: {
+        label: &quot;Hello!&quot;,
+      },
+      methods: {
+        hello: function () {
+          alert(&quot;Hello!!&quot;);
         },
-        methods: {
-          hello: function () {
-            alert(&quot;Hello!!&quot;);
-          },
-        },
-      });
+      },
+    });
     &lt;/script&gt;</code></pre>
           </div>
         </div>

@@ -2,56 +2,207 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/github-dark.min.css"/>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
         <title>Option(Data)</title>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
     <body>
         <div id="app">
             <div class="collection">
-                <h3>はじめに</h3>
+                <h3 class="under-line">はじめに</h3>
                 <span>ここの内容は<a href="https://www.tohoho-web.com/ex/vuejs.html">Vue.js入門 - とほほのＷＷＷ入門</a>に記述されているモノを写しているだけです。詳しく知りたい場合は自分で調べてね。<br>ここでは、オプション（データ）についてをいろいろ試しているよ。</span>
                 <br>
                 <div class="toTop"><a href="../index.html">トップ</a></div>
             </div>
 
             <div class="collection">
-                <h3>Data</h3>
-                <div>{{ message1 }}</div>
-                <div class="memo">Displayの最初に行っていたことのおさらいです。</div>
+                <h3 class="under-line">Data</h3>
+                <div class="contents">
+                    <div class="web-content">
+                        <div>{{ message1 }}</div>
+                        <div class="memo">Displayの最初に行っていたことのおさらいです。</div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;div&gt;{{ message }}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            message: &#039;Hello world!!&#039;,
+        },
+    });        
+    &lt;/script&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
-                <h3>Component props</h3>
-                <element1 value="Hello!!"></element1>
+                <h3 class="under-line">Component props</h3>
+                <div class="contents">
+                    <div class="web-content">
+                        <element1 value="Hello!!"></element1>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;element1 value=&quot;Hello!!&quot;&gt;&lt;/element&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    Vue.component(&#039;element&#039;,{
+        props:[&#039;value&#039;],
+        template: &#039;&lt;div&gt;{{ value }}&lt;/div&gt;&#039;
+    });
+    var app = new Vue({
+        el: &#039;#app&#039;,
+    });        
+    &lt;/script&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
-                <h3>Props data</h3>
-                <div id="element2"></div>
+                <h3 class="under-line">Props data</h3>
+                <div class="contents">
+                    <div class="web-content">
+                        <div id="element2"></div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;div id=&quot;element&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    var element = Vue.extend({
+        props: [&#039;message&#039;],
+        template: &#039;&lt;div&gt;{{ message }}&lt;/div&gt;&#039;,
+    });
+    var vm = new element({
+        propsData: {message: &#039;Hello!!&#039;},
+    }).$mount(&#039;#element&#039;);
+    var app = new Vue({
+        el: &#039;#app&#039;,
+    });        
+    &lt;/script&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
-                <h3>Computed</h3>
-                <div><input v-model="message2"></div>
-                <div>{{ upperMessage }}</div>
+                <h3 class="under-line">Computed</h3>
+                <div class="contents">
+                    <div class="web-content">
+                        <div><input v-model="message2"></div>
+                        <div>{{ upperMessage }}</div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;div&gt;&lt;input v-model=&quot;message&quot;&gt;&lt;/div&gt;
+        &lt;div&gt;{{ upperMessage }}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            message: &#039;Hello&#039;,
+        },
+        computed:{
+            upperMessage: function() {
+                return this.message.toUpperCase();
+            }
+        }
+    });        
+    &lt;/script&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
-                <h3>Methods</h3>
-                <button @click="toUpper">Upper</button>
-                <button @click="toLower">Lower</button>
-                <div>{{ message3 }}</div>
+                <h3 class="under-line">Methods</h3>
+                <div class="contents">
+                    <div class="web-content">
+                        <button @click="toUpper">Upper</button>
+                        <button @click="toLower">Lower</button>
+                        <div>{{ message3 }}</div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;button @click=&quot;toUpper&quot;&gt;Upper&lt;/button&gt;
+        &lt;button @click=&quot;toLower&quot;&gt;Lower&lt;/button&gt;
+        &lt;div&gt;{{ message }}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            message: &#039;Hello world!!&#039;,
+        },
+        methods: {
+            toUpper: function() {
+                this.message = this.message.toUpperCase();
+            },
+            toLower: function() {
+                this.message = this.message.toLowerCase();
+            },
+        },
+    });        
+    &lt;/script&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
-                <h3>Watch</h3>
-                <form>
-                    <input type="text" name="text1" :value="message4">
-                    <input type="button" @click="change" value="Change">
-                </form>
-                <div>変更前：{{ oldMessage }}</div>
-                <div>変更後：{{ newMessage }}</div>
+                <h3 class="under-line">Watch</h3>
+                <div class="contents">
+                    <div class="web-content">
+                        <form>
+                            <input type="text" name="text1" :value="message4">
+                            <input type="button" @click="change" value="Change">
+                        </form>
+                        <div>変更前：{{ oldMessage }}</div>
+                        <div>変更後：{{ newMessage }}</div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;form&gt;
+            &lt;input type=&quot;text&quot; name=&quot;text1&quot; :value=&quot;message&quot;&gt;
+            &lt;input type=&quot;button&quot; @click=&quot;change&quot; value=&quot;Change&quot;&gt;
+        &lt;/form&gt;
+        &lt;div&gt;変更前：{{ oldMessage }}&lt;/div&gt;
+        &lt;div&gt;変更後：{{ newMessage }}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            message: &#039;new&#039;,
+            newMessage: &#039;new&#039;,
+            oldMessage: &#039;old&#039;,
+        },
+        watch: {
+            message: function(newVal, oldVal) {
+                this.newMessage = newVal;
+                this.oldMessage = oldVal;
+            },
+        },
+        methods: {
+            change: function(el) {
+                this.message = el.target.form.text1.value;
+            }
+        },
+    });        
+    &lt;/script&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
         </div>

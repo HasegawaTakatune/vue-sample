@@ -9,23 +9,23 @@
     <body>
         <div id="app">
             <div class="collection">
-                <h3>はじめに</h3>
+                <h3 class="under-line">はじめに</h3>
                 <span>ここの内容は<a href="https://www.tohoho-web.com/ex/vuejs.html">Vue.js入門 - とほほのＷＷＷ入門</a>に記述されているモノを写しているだけです。詳しく知りたい場合は自分で調べてね。<br>ここでは、初めに表示についてをいろいろ試しているよ。</span>
             </div>
             <div class="collection index">
-                <h3>---- もくじ ----</h3>
-                <h5>初めの段</h5>
+                <h3 class="under-line">---- もくじ ----</h3>
+                <h5 class="under-line">初めの段</h5>
                 <ul>
                     <li v-for="page in pages"><a :href="page.url">{{ page.name }}</a></li>
                 </ul>
                 <br>
-                <h5>遊びの段</h5>
+                <h5 class="under-line">遊びの段</h5>
                 <ul>
                     <li v-for="sb in sandBoxs"><a :href="sb.url">{{ sb.name }}</a></li>
                 </ul>
             </div>
             <div class="collection">
-                <h3>お絵かき</h3>
+                <h3 class="under-line">お絵かき</h3>
                 <span>ルール<br>カラーパレットから、色を選択してマスをクリックすると色がぬれるよ。好きにお絵描きしてみよう。</span>
                 <div class="picture__main">
                     <div class="mb10">

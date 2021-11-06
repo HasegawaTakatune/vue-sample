@@ -2,21 +2,25 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/github-dark.min.css"/>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
         <title>Option(Life cycle/ Hook)</title>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
     <body>
         <div id="app">
             <div class="collection">
-                <h3>はじめに</h3>
+                <h3 class="under-line">はじめに</h3>
                 <span>ここの内容は<a href="https://www.tohoho-web.com/ex/vuejs.html">Vue.js入門 - とほほのＷＷＷ入門</a>に記述されているモノを写しているだけです。詳しく知りたい場合は自分で調べてね。<br>ここでは、オプション（その他いろいろ）についてをいろいろ試しているよ。</span>
                 <br>
                 <div class="toTop"><a href="../index.html">トップ</a></div>
             </div>
 
             <div class="collection">
-                <h3>Life cycle/ Hook</h3>
+                <h3 class="under-line">Life cycle/ Hook</h3>
                 <div class="memo">
                 ライフサイクル、イベントハンドラ、メモだけ残す。<br>
                 beforeCreate	インスタンスが作成される直前に呼ばれます。<br>
@@ -34,36 +38,153 @@
             </div>
 
             <div class="collection">
-                <h3>Directives</h3>
-                <div v-myfont>Hello!!</div>
-                <div class="memo">ディレクティブを自作できる。ここでは、フォントサイズを変えているだけだがイベントフックで各タイミング別に動作させられそう。</div>
+                <h3 class="under-line">Directives</h3>
+                <div class="contents">
+                    <div class="web-content">
+                        <div v-myfont_8>Hello!!</div>
+                        <div v-myfont_12>Hello!!</div>
+                        <div v-myfont_16>Hello!!</div>
+                        <div v-myfont_20>Hello!!</div>
+                        <div v-myfont_24>Hello!!</div>
+                        <div class="memo">ディレクティブを自作できる。ここでは、フォントサイズを変えているだけだがイベントフックで各タイミング別に動作させられそう。</div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;div v-myfont_8&gt;Hello!!&lt;/div&gt;
+        &lt;div v-myfont_12&gt;Hello!!&lt;/div&gt;
+        &lt;div v-myfont_16&gt;Hello!!&lt;/div&gt;
+        &lt;div v-myfont_20&gt;Hello!!&lt;/div&gt;
+        &lt;div v-myfont_24&gt;Hello!!&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        directives: {
+            myfont_8: {
+                inserted: function (el) {
+                    el.style.fontSize = &#039;8pt&#039;;
+                },
+            },
+            myfont_12: {
+                inserted: function (el) {
+                    el.style.fontSize = &#039;12pt&#039;;
+                },
+            },
+            myfont_16: {
+                inserted: function (el) {
+                    el.style.fontSize = &#039;16pt&#039;;
+                },
+            },
+            myfont_20: {
+                inserted: function (el) {
+                    el.style.fontSize = &#039;20pt&#039;;
+                },
+            },
+            myfont_24: {
+                inserted: function (el) {
+                    el.style.fontSize = &#039;24pt&#039;;
+                },
+            },
+        },
+    });
+    &lt;/script&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
-                <h3>Filters</h3>
-                <div>{{ message1 | toUpper }}</div>
-                <div>{{ message1 | toLower }}</div>
-                <div class="memo">もとの値からフィルタ掛けをする。カナのフィルタ掛けなどにも使えそう。</div>
+                <h3 class="under-line">Filters</h3>
+                <div class="contents">
+                    <div class="web-content">
+                        <div>{{ message1 | toUpper }}</div>
+                        <div>{{ message1 | toLower }}</div>
+                        <div class="memo">もとの値からフィルタ掛けをする。カナのフィルタ掛けなどにも使えそう。</div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;div&gt;{{ message | toUpper }}&lt;/div&gt;
+        &lt;div&gt;{{ message | toLower }}&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        data: {
+            message: &#039;Hello!!&#039;,
+        },
+        filters: {
+            toUpper: function (value) {
+                return value.toUpperCase();
+            },
+            toLower: function (value) {
+                return value.toLowerCase();
+            },
+        },
+    });
+    &lt;/script&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
-                <h3>Components</h3>
-                <my-comp1></my-comp1>
-                <my-comp2></my-comp2>
-                <my-comp3></my-comp3>
+                <h3 class="under-line">Components</h3>
+                <div class="contents">
+                    <div class="web-content">
+                        <my-comp1></my-comp1>
+                        <my-comp2></my-comp2>
+                        <my-comp3></my-comp3>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;my-comp1&gt;&lt;/my-comp1&gt;
+        &lt;my-comp2&gt;&lt;/my-comp2&gt;
+        &lt;my-comp3&gt;&lt;/my-comp3&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    var MyComponent1 = { template: &#039;&lt;div style=&quot;color: red&quot;&gt;Hello!!&lt;/div&gt;&#039; };
+    var MyComponent2 = { template: &#039;&lt;div style=&quot;color: green&quot;&gt;Hello!!&lt;/div&gt;&#039; };
+    var MyComponent3 = { template: &#039;&lt;div style=&quot;color: blue&quot;&gt;Hello!!&lt;/div&gt;&#039; };
+    var app = new Vue({
+        el: &#039;#app&#039;,
+    });
+    &lt;/script&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
-                <h3>Mixins</h3>
-                <input type="button" @click="hello" value="Hello">
-                <br>
-                <div class="memo">ライブラリみたいに取り込んで利用することができるみたい、実装する際のお約束として見ておけばいい感じ。</div>
+                <h3 class="under-line">Mixins</h3>
+
+                <div class="contents">
+                    <div class="web-content">
+                        <input type="button" @click="hello" value="Hello">
+                        <br>
+                        <div class="memo">ライブラリみたいに取り込んで利用することができるみたい、実装する際のお約束として見ておけばいい感じ。</div>
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+    &lt;/div&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
             <div class="collection">
-                <h3>KeyCodes</h3>
+                <h3 class="under-line">KeyCodes</h3>
                 <input type="text" @keyup.alt-h="onKeyDown">
                 <div class="memo">今回はキーイベントをtextタグに入れて使っているけど、divタグでも囲っても使えそう？コンテンツとして作りこむ分には使えそう。</div>
+
+                <div class="contents">
+                    <div class="web-content">
+                    </div>
+                    <div class="code-content">
+                        <pre><code v-pre>    &lt;div id="app"&gt;
+    &lt;/div&gt;
+                        </code></pre>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -101,11 +222,31 @@
             },
 
             directives: {
-                myfont: {
+                myfont_8: {
+                    inserted: function (el) {
+                        el.style.fontSize = '8pt';
+                    },
+                },
+                myfont_12: {
+                    inserted: function (el) {
+                        el.style.fontSize = '12pt';
+                    },
+                },
+                myfont_16: {
+                    inserted: function (el) {
+                        el.style.fontSize = '16pt';
+                    },
+                },
+                myfont_20: {
+                    inserted: function (el) {
+                        el.style.fontSize = '20pt';
+                    },
+                },
+                myfont_24: {
                     inserted: function (el) {
                         el.style.fontSize = '24pt';
                     },
-                },
+                }
             },
 
             filters: {
