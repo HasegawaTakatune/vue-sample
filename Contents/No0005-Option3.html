@@ -156,7 +156,6 @@
 
             <div class="collection">
                 <h3 class="under-line">Mixins</h3>
-
                 <div class="contents">
                     <div class="web-content">
                         <input type="button" @click="hello" value="Hello">
@@ -165,7 +164,21 @@
                     </div>
                     <div class="code-content">
                         <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;input type=&quot;button&quot; @click=&quot;hello&quot; value=&quot;Hello&quot;&gt;
     &lt;/div&gt;
+    &lt;script&gt;
+    var MyMixin = {
+        methods: {
+            hello: function () {
+                alert(&quot;Hello!&quot;);
+            },
+        },
+    };
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        mixins: [MyMixin],
+    });
+    &lt;/script&gt;
                         </code></pre>
                     </div>
                 </div>
@@ -173,15 +186,26 @@
 
             <div class="collection">
                 <h3 class="under-line">KeyCodes</h3>
-                <input type="text" @keyup.alt-h="onKeyDown">
-                <div class="memo">今回はキーイベントをtextタグに入れて使っているけど、divタグでも囲っても使えそう？コンテンツとして作りこむ分には使えそう。</div>
 
                 <div class="contents">
                     <div class="web-content">
+                        <input type="text" @keyup.alt.72="onKeyDown">
+                        <div class="memo">今回はキーイベントをtextタグに入れて使っているけど、divタグでも囲っても使えそう？コンテンツとして作りこむ分には使えそう。</div>
                     </div>
                     <div class="code-content">
                         <pre><code v-pre>    &lt;div id="app"&gt;
+        &lt;input type=&quot;text&quot; @keyup.alt.72=&quot;onKeyDown&quot;&gt;
     &lt;/div&gt;
+    &lt;script&gt;
+    var app = new Vue({
+        el: &#039;#app&#039;,
+        methods: {
+            onKeyDown: function () {
+                alert(&quot;Help...&quot;);
+            }
+        },
+    });
+    &lt;/script&gt;
                         </code></pre>
                     </div>
                 </div>
@@ -199,11 +223,6 @@
                     alert("Hello!");
                 },
             },
-        };
-
-        Vue.config.keyCodes = {
-            h: 72,
-            "alt-h": [18, 72]
         };
 
         var app = new Vue({
