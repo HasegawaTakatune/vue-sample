@@ -4,6 +4,10 @@
 ここの内容は[Vue.js入門 - とほほのＷＷＷ入門](https://www.tohoho-web.com/ex/vuejs.html)に記述されているモノを写しているだけです。詳しく知りたい場合は自分で調べてね。  
 Vue.jsの練習を頑張ってしてるな～って気持ちで見て（利用して）下さい。  
 
+# 環境  
+・ Vue 2.6.14  
+・ Visual Studio Code 1.62.0  
+  
 # 参考  
 [Vue.js入門 - とほほのＷＷＷ入門](https://www.tohoho-web.com/ex/vuejs.html)  
 [vue-routerチートシート](https://qiita.com/morrr/items/873ea25a806167c8d426)  
@@ -23,6 +27,9 @@ Vue.jsの練習を頑張ってしてるな～って気持ちで見て（利用�
   
   
 ### TODO  
-・ SPAの基本(画面遷移)  
-・ ソースコードビューの表示/非表示切り替え  
-・ シミュレーション画面作成  
+~~・SPAの基本(画面遷移)~~  
+``` 画面遷移の実装については、新しくNuxt・Vueの環境でNuxtLingかVueRouterを使って実装する。```  
+~~・ソースコードビューの表示/非表示切り替え~~  
+~~・シミュレーション画面作成~~  
+``` とりあえずLoopMoniterでFixしておく、ほかにシミュレーションしたい場合は同じくNuxt・Vueの環境で実装する。```  
+  
